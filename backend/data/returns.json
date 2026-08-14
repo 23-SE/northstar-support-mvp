@@ -1,0 +1,34 @@
+{
+  "1001": {
+    "order_id": "1001",
+    "returnable": true,
+    "window_days": 30,
+    "days_left": 26,
+    "refund_status": "not_started",
+    "instructions": "Start your return from the returns portal and use the prepaid label within 30 days of delivery."
+  },
+  "1002": {
+    "order_id": "1002",
+    "returnable": true,
+    "window_days": 30,
+    "days_left": 30,
+    "refund_status": "pending",
+    "instructions": "This order is still processing. Return eligibility opens once the order is delivered."
+  },
+  "1003": {
+    "order_id": "1003",
+    "returnable": false,
+    "window_days": 30,
+    "days_left": 0,
+    "refund_status": "refunded",
+    "instructions": "Return already completed and refund has been issued to the original payment method."
+  },
+  "1004": {
+    "order_id": "1004",
+    "returnable": false,
+    "window_days": 30,
+    "days_left": 0,
+    "refund_status": "not_applicable",
+    "instructions": "This order was cancelled before shipment, so no return is required."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "1001": {
+    "order_id": "1001",
+    "customer": "Jane Mwangi",
+    "status": "shipped",
+    "shipped_date": "2026-08-12",
+    "eta": "2026-08-16",
+    "carrier": "Sendy",
+    "tracking": "SND-1001-KE"
+  },
+  "1002": {
+    "order_id": "1002",
+    "customer": "Peter Otieno",
+    "status": "processing",
+    "shipped_date": null,
+    "eta": "2026-08-18",
+    "carrier": null,
+    "tracking": null
+  },
+  "1003": {
+    "order_id": "1003",
+    "customer": "Amina Hassan",
+    "status": "delivered",
+    "shipped_date": "2026-08-08",
+    "eta": "2026-08-11",
+    "carrier": "G4S",
+    "tracking": "G4S-1003-KE"
+  },
+  "1004": {
+    "order_id": "1004",
+    "customer": "David Kimani",
+    "status": "cancelled",
+    "shipped_date": null,
+    "eta": null,
+    "carrier": null,
+    "tracking": null
+  }
+}

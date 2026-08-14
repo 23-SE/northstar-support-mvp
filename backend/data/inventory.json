@@ -1,0 +1,42 @@
+{
+  "SKU-TEE-BLK-M": {
+    "sku": "SKU-TEE-BLK-M",
+    "name": "Northstar Tee - Black - Medium",
+    "in_stock": false,
+    "quantity": 0,
+    "restock_date": "2026-08-20",
+    "alternatives": ["SKU-TEE-BLK-L", "SKU-TEE-NVY-M"]
+  },
+  "SKU-TEE-BLK-L": {
+    "sku": "SKU-TEE-BLK-L",
+    "name": "Northstar Tee - Black - Large",
+    "in_stock": true,
+    "quantity": 14,
+    "restock_date": null,
+    "alternatives": []
+  },
+  "SKU-TEE-NVY-M": {
+    "sku": "SKU-TEE-NVY-M",
+    "name": "Northstar Tee - Navy - Medium",
+    "in_stock": true,
+    "quantity": 3,
+    "restock_date": null,
+    "alternatives": []
+  },
+  "SKU-SHOE-42": {
+    "sku": "SKU-SHOE-42",
+    "name": "Northstar Runner - Size 42",
+    "in_stock": false,
+    "quantity": 0,
+    "restock_date": "2026-08-25",
+    "alternatives": ["SKU-SHOE-43"]
+  },
+  "SKU-SHOE-43": {
+    "sku": "SKU-SHOE-43",
+    "name": "Northstar Runner - Size 43",
+    "in_stock": true,
+    "quantity": 7,
+    "restock_date": null,
+    "alternatives": []
+  }
+}
