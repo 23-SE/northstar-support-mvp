@@ -55,6 +55,6 @@ By adding your name below (or reacting ✅ in the group), each member agrees to 
 
 - Alex — ✅
 - W. Grace — ☐
-- Gilton — ☐
+- Gilton — ✅
 - Kelly — ☐
 - Veronica — ☐
