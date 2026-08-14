@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northstar Retail — Help Centre</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">★ Northstar Retail</div>
+    <div class="tag">Self-Service Help Centre</div>
+  </header>
+
+  <main class="container">
+    <p class="intro">Get an instant answer before opening a ticket. Pick a topic below.</p>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="order">Order Status</button>
+      <button class="tab" data-tab="return">Returns &amp; Refunds</button>
+      <button class="tab" data-tab="stock">Stock Check</button>
+    </nav>
+
+    <section class="panel active" id="panel-order">
+      <label for="order-input">Enter your order number</label>
+      <div class="row">
+        <input id="order-input" placeholder="e.g. 1001" />
+        <button onclick="lookupOrder()">Check</button>
+      </div>
+      <div class="result" id="order-result"></div>
+    </section>
+
+    <section class="panel" id="panel-return">
+      <label for="return-input">Enter your order number</label>
+      <div class="row">
+        <input id="return-input" placeholder="e.g. 1001" />
+        <button onclick="lookupReturn()">Check</button>
+      </div>
+      <div class="result" id="return-result"></div>
+    </section>
+
+    <section class="panel" id="panel-stock">
+      <label for="stock-input">Enter the product SKU</label>
+      <div class="row">
+        <input id="stock-input" placeholder="e.g. SKU-TEE-BLK-M" />
+        <button onclick="lookupStock()">Check</button>
+      </div>
+      <div class="result" id="stock-result"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
