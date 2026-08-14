@@ -45,8 +45,21 @@ def get_return(order_id: str):
 
 @app.get("/api/stock/<sku>")
 def get_stock(sku: str):
-    # TODO (OWNER: Kelly)
-    return jsonify({"found": False, "message": "Not implemented yet"}), 501
+    try:
+        inventory = load("inventory.json")
+        item = inventory.get(sku)
+        if item:
+            return jsonify({
+                "found": True,
+                "sku": sku,
+                "name": item.get("name"),
+                "available": item.get("quantity", 0) > 0,
+                "quantity": item.get("quantity", 0),
+                "alternatives": item.get("alternatives", [])
+            })
+        return jsonify({"found": False, "message": "SKU not found"}), 404
+    except FileNotFoundError:
+        return jsonify({"found": False, "message": "Inventory data unavailable"}), 500
 
 
 if __name__ == "__main__":
