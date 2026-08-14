@@ -57,4 +57,4 @@ By adding your name below (or reacting ✅ in the group), each member agrees to 
 - W. Grace — ☐
 - Gilton — ✅
 - Kelly — ✅
-- Veronica — ☐
+- Veronica — ✅
