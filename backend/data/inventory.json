@@ -1,42 +1,46 @@
-{
-  "SKU-TEE-BLK-M": {
-    "sku": "SKU-TEE-BLK-M",
-    "name": "Northstar Tee - Black - Medium",
-    "in_stock": false,
-    "quantity": 0,
-    "restock_date": "2026-08-20",
-    "alternatives": ["SKU-TEE-BLK-L", "SKU-TEE-NVY-M"]
+[
+  {
+    "sku": "SKU-SHOE-01",
+    "name": "Ultra-Fit Running Shoes",
+    "category": "Footwear",
+    "price": "$120.00",
+    "inStock": true,
+    "stockCount": 42,
+    "sizesAvailable": ["US 7", "US 8", "US 9", "US 10", "US 11"],
+    "outOfStockSizes": ["US 8.5", "US 12"],
+    "nextRestockDate": "2026-08-20"
   },
-  "SKU-TEE-BLK-L": {
-    "sku": "SKU-TEE-BLK-L",
-    "name": "Northstar Tee - Black - Large",
-    "in_stock": true,
-    "quantity": 14,
-    "restock_date": null,
-    "alternatives": []
+  {
+    "sku": "SKU-AUDIO-02",
+    "name": "Wireless Noise-Canceling Headphones",
+    "category": "Electronics",
+    "price": "$199.00",
+    "inStock": true,
+    "stockCount": 15,
+    "sizesAvailable": ["Standard Black", "Silver Gray"],
+    "outOfStockSizes": ["Rose Gold"],
+    "nextRestockDate": "2026-08-25"
   },
-  "SKU-TEE-NVY-M": {
-    "sku": "SKU-TEE-NVY-M",
-    "name": "Northstar Tee - Navy - Medium",
-    "in_stock": true,
-    "quantity": 3,
-    "restock_date": null,
-    "alternatives": []
+  {
+    "sku": "SKU-HOOD-03",
+    "name": "Organic Cotton Hoodie",
+    "category": "Apparel",
+    "price": "$65.00",
+    "inStock": false,
+    "stockCount": 0,
+    "sizesAvailable": [],
+    "outOfStockSizes": ["Small", "Medium", "Large", "XL"],
+    "nextRestockDate": "2026-08-16"
   },
-  "SKU-SHOE-42": {
-    "sku": "SKU-SHOE-42",
-    "name": "Northstar Runner - Size 42",
-    "in_stock": false,
-    "quantity": 0,
-    "restock_date": "2026-08-25",
-    "alternatives": ["SKU-SHOE-43"]
-  },
-  "SKU-SHOE-43": {
-    "sku": "SKU-SHOE-43",
-    "name": "Northstar Runner - Size 43",
-    "in_stock": true,
-    "quantity": 7,
-    "restock_date": null,
-    "alternatives": []
+  {
+    "sku": "SKU-BOTT-04",
+    "name": "Insulated Thermal Water Bottle (1L)",
+    "category": "Accessories",
+    "price": "$34.00",
+    "inStock": true,
+    "stockCount": 88,
+    "sizesAvailable": ["1 Liter - Matte Black", "1 Liter - Ocean Blue", "1 Liter - Sage Green"],
+    "outOfStockSizes": [],
+    "nextRestockDate": "In Stock"
   }
-}
+]
