@@ -7,10 +7,10 @@ Every task is scoped to **≤ 4 hours** with a single checkable Definition of Do
 | # | Task | Owner | Priority | Est. | Definition of Done (single checkable sentence) |
 |---|------|-------|----------|------|-------------------------------------------------|
 | 1 | Repo scaffold + folder structure | Alex | 🔴 High | 1h | Repo has `backend/` + `frontend/` + docs and pushes to `main` cleanly. |
-| 2 | Order Status endpoint (`/api/order/<id>`) | Grace | 🔴 High | 2h | Returns correct JSON for orders 1001–1004 and 404 for unknown IDs. |
-| 3 | Returns endpoint (`/api/return/<id>`) | Grace | 🔴 High | 3h | Returns refund/return JSON per `API_CONTRACT.md` and 404 for unknown IDs. |
+| 2 | Order Status endpoint (`/api/orders/<id>`) | Grace | 🔴 High | 2h | Returns correct JSON for orders 1001–1004 and 404 for unknown IDs. |
+| 3 | Returns endpoint (`/api/returns/<id>`) | Grace | 🔴 High | 3h | Returns refund/return JSON per `API_CONTRACT.md` and 404 for unknown IDs. |
 | 4 | Mock data files (orders/returns/inventory) | Gilton | 🔴 High | 2h | All three JSON files parse without error and cover the demo cases. |
-| 5 | Stock endpoint (`/api/stock/<sku>`) | Kelly | 🟢 Low | 3h | Returns stock JSON incl. alternatives for out-of-stock SKUs; 404 for unknown SKU. |
+| 5 | Stock endpoint (`/api/inventory/<sku>`) | Kelly | 🟢 Low | 3h | Returns stock JSON incl. alternatives for out-of-stock SKUs; 404 for unknown SKU. |
 | 6 | Frontend shell + tab navigation | Alex | 🔴 High | 2h | Three tabs render and switch panels correctly in the browser. |
 | 7 | Frontend: Order Status wiring | Alex | 🔴 High | 1h | Entering a valid order number renders a result card with status badge. |
 | 8 | Frontend: Returns wiring | Alex | 🔴 High | 1h | Returns tab renders refund info from the live endpoint. |
