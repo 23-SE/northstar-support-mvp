@@ -54,7 +54,7 @@ A task is Done when: the code runs locally without errors, it matches the shape 
 By adding your name below (or reacting ✅ in the group), each member agrees to this charter.
 
 - Alex — ✅
-- W. Grace — ☐
+- W. Grace — ✅
 - Gilton — ✅
 - Kelly — ✅
 - Veronica — ✅
