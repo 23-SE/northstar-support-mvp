@@ -8,12 +8,12 @@ The Northstar Support Deflection MVP is a self-service support solution designed
 
 2. What Works
 
-- Order Status: The MVP provides an Order Status endpoint at "/api/order/<id>" for retrieving order information.
-- Returns & Refunds: The MVP provides a Returns endpoint at "/api/return/<id>" for retrieving return and refund information.
+- Order Status: The MVP provides an Order Status endpoint at "/api/orders/<id>" for retrieving order information.
+- Returns & Refunds: The MVP provides a Returns endpoint at "/api/returns/<id>" for retrieving return and refund information.
 - Frontend: The application provides a tabbed interface for accessing the available support categories.
 - Order Status interface: A valid order number can be entered to retrieve the corresponding order result and status.
 - Returns interface: The frontend is connected to the Returns endpoint to retrieve return and refund information.
-- Stock Check: The MVP includes a Stock Check endpoint at "/api/stock/<sku>" as a bonus feature.
+- Stock Check: The MVP includes a Stock Check endpoint at "/api/inventory?q=<query>." as a bonus feature.
 - Data: The MVP uses mock JSON files for the demonstration scenarios.
 - Documentation: The repository contains setup instructions and an API contract describing the available endpoints and expected responses.
 
