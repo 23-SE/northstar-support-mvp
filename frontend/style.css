@@ -60,10 +60,19 @@ body {
 .tab {
   border: 1px solid var(--line);
   background: #fff;
+  color: var(--plum-dark);
   padding: 10px 14px;
   border-radius: 10px 10px 0 0;
   cursor: pointer;
   font-size: 0.95rem;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.tab:hover,
+.tab:focus-visible {
+  background: #f7edf2;
+  color: var(--plum);
+  border-color: var(--plum);
 }
 
 .tab.active {
@@ -103,7 +112,7 @@ input {
   font-size: 1rem;
 }
 
-button {
+button:not(.tab) {
   background: var(--plum);
   color: #fff;
   border: 0;
@@ -113,7 +122,7 @@ button {
   font-size: 1rem;
 }
 
-button:hover {
+button:not(.tab):hover {
   background: var(--plum-dark);
 }
 
