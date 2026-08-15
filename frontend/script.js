@@ -9,6 +9,26 @@ document.querySelectorAll(".tab").forEach((tab) => {
   });
 });
 
+// Load deflection stats on page load
+window.addEventListener('DOMContentLoaded', () => {
+  loadDeflectionStats();
+});
+
+async function loadDeflectionStats() {
+  try {
+    const res = await fetch(`${API}/api/deflection-stats`);
+    if (res.ok) {
+      const data = await res.json();
+      const banner = document.getElementById('deflection-banner');
+      if (banner && data.message) {
+        banner.textContent = data.message;
+      }
+    }
+  } catch (e) {
+    // Fail silently
+  }
+}
+
 function show(id, html) {
   document.getElementById(id).innerHTML = html;
 }
@@ -33,19 +53,24 @@ async function lookupOrder() {
   loading("order-result");
 
   try {
-    const { ok, data } = await getJSON(`${API}/api/order/${id}`);
-    if (!ok || !data.found) {
-      return errorCard("order-result", data.message || "Order not found. Check the number and try again.");
+    const { ok, data } = await getJSON(`${API}/api/orders/${id}`);
+    if (!ok || !data.success) {
+      return errorCard("order-result", data.error || "Order not found. Check the number and try again.");
     }
 
-    const badge = data.status === "delivered" ? "ok" : data.status === "cancelled" ? "err" : "warn";
+    const order = data.order;
+    const badge = order.status === "Delivered" ? "ok" : order.status === "Processing" ? "warn" : "warn";
+    const itemsList = order.items?.map(i => `${i.name} (${i.size || 'Standard'}) × ${i.qty}`).join(', ') || '-';
+    
     show(
       "order-result",
       `<div class="card">
-        <h3>Order ${data.order_id} <span class="badge ${badge}">${data.status}</span></h3>
-        <p><span class="k">ETA:</span> ${data.eta || "-"}<br>
-        <span class="k">Shipped:</span> ${data.shipped_date || "not yet"}<br>
-        <span class="k">Carrier:</span> ${data.carrier || "-"} ${data.tracking ? `(${data.tracking})` : ""}</p>
+        <h3>Order ${order.orderId} <span class="badge ${badge}">${order.status}</span></h3>
+        <p><span class="k">Customer:</span> ${order.customer}<br>
+        <span class="k">Items:</span> ${itemsList}<br>
+        <span class="k">Carrier:</span> ${order.carrier}<br>
+        <span class="k">Tracking:</span> ${order.trackingNumber}<br>
+        <span class="k">Est. Delivery:</span> ${order.estimatedDelivery}</p>
       </div>`
     );
   } catch (e) {
@@ -59,19 +84,22 @@ async function lookupReturn() {
   loading("return-result");
 
   try {
-    const { ok, data } = await getJSON(`${API}/api/return/${id}`);
-    if (!ok || !data.found) {
-      return errorCard("return-result", data.message || "No return info for that order.");
+    const { ok, data } = await getJSON(`${API}/api/returns/${id}`);
+    if (!ok || !data.success) {
+      return errorCard("return-result", data.error || "No return info for that order.");
     }
 
-    const badge = data.returnable ? "ok" : "err";
+    const itemsList = data.items?.map(i => `${i.name}`).join(', ') || 'N/A';
+    const badge = data.items && data.items.length > 0 ? "ok" : "warn";
+    
     show(
       "return-result",
       `<div class="card">
-        <h3>Order ${data.order_id} <span class="badge ${badge}">${data.returnable ? "returnable" : "not returnable"}</span></h3>
-        <p><span class="k">Window:</span> ${data.window_days} days (${data.days_left} left)<br>
-        <span class="k">Refund:</span> ${data.refund_status}</p>
-        <p>${data.instructions}</p>
+        <h3>Order ${data.orderId} <span class="badge ${badge}">${data.items?.length ? "Returnable" : "Policy Info"}</span></h3>
+        <p><span class="k">Customer:</span> ${data.customer}<br>
+        <span class="k">Eligible Items:</span> ${itemsList}<br>
+        <span class="k">Return Window:</span> ${data.policyDays} days<br>
+        <span class="k">Prepaid Label:</span> ${data.prepaidLabel ? 'Yes' : 'No'}</p>
       </div>`
     );
   } catch (e) {
@@ -80,30 +108,38 @@ async function lookupReturn() {
 }
 
 async function lookupStock() {
-  const sku = document.getElementById("stock-input").value.trim();
-  if (!sku) return;
+  const query = document.getElementById("stock-input").value.trim();
+  if (!query) return;
   loading("stock-result");
 
   try {
-    const { ok, data } = await getJSON(`${API}/api/stock/${sku}`);
-    if (!ok || !data.found) {
-      return errorCard("stock-result", data.message || "SKU not found.");
+    const { ok, data } = await getJSON(`${API}/api/inventory?q=${encodeURIComponent(query)}`);
+    if (!ok || !data.success) {
+      return errorCard("stock-result", data.error || "No products found.");
     }
 
-    const badge = data.in_stock ? "ok" : "warn";
-    const alternatives = data.alternatives?.length
-      ? `<p><span class="k">Alternatives:</span> ${data.alternatives.join(", ")}</p>`
-      : "";
+    const results = data.results;
+    if (!results || results.length === 0) {
+      return errorCard("stock-result", "No products match your search.");
+    }
 
-    show(
-      "stock-result",
-      `<div class="card">
-        <h3>${data.name} <span class="badge ${badge}">${data.in_stock ? "in stock" : "out of stock"}</span></h3>
-        <p><span class="k">Quantity:</span> ${data.quantity}<br>
-        ${data.restock_date ? `<span class="k">Restock:</span> ${data.restock_date}` : ""}</p>
-        ${alternatives}
-      </div>`
-    );
+    const cardsHTML = results
+      .map(item => {
+        const badge = item.inStock ? "ok" : "warn";
+        const restockInfo = !item.inStock && item.nextRestockDate
+          ? `<p><span class="k">Restock:</span> ${item.nextRestockDate}</p>`
+          : '';
+        return `<div class="card">
+          <h3>${item.name} <span class="badge ${badge}">${item.inStock ? "in stock" : "out of stock"}</span></h3>
+          <p><span class="k">SKU:</span> ${item.sku}<br>
+          <span class="k">Price:</span> ${item.price}<br>
+          <span class="k">Stock:</span> ${item.stockCount} units</p>
+          ${restockInfo}
+        </div>`;
+      })
+      .join('');
+
+    show("stock-result", cardsHTML);
   } catch (e) {
     errorCard("stock-result", "Can't reach the server. Is the backend running on port 5000?");
   }
