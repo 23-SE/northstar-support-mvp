@@ -38,3 +38,23 @@ Use this format:
 `<type>: <what changed> - <why it matters>`
 
 Avoid vague messages like "wip" or "updates".
+
+## Demo
+
+Here's a quick preview of the Northstar Support Deflection MVP in action:
+
+### Order Status
+![Order Status](demo/order-status.png)
+
+### Returns & Refunds
+![Returns & Refunds](demo/returns.png)
+
+### Stock Check (Bonus)
+![Stock Check](demo/stock-check.png)
+
+### Video Demo
+[Click here to watch a short demo video](demo/demo-video.mp4)
+
+---
+
+*The deflection banner is visible at the top of each screenshot showing the system automatically answering customer questions.*
